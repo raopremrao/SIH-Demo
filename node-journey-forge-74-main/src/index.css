@@ -1,0 +1,465 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* SkillForge Dark Theme - Main Colors */
+    --background: 220 13% 13%;
+    --foreground: 210 40% 98%;
+    --surface: 220 13% 18%;
+    --surface-elevated: 220 13% 22%;
+
+    /* Cards and Containers */
+    --card: 220 13% 18%;
+    --card-foreground: 210 40% 98%;
+    --card-border: 220 13% 25%;
+
+    /* Interactive Elements */
+    --popover: 220 13% 18%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Brand Colors - Blue/Teal Theme */
+    --primary: 193 95% 55%;
+    --primary-foreground: 220 13% 13%;
+    --primary-muted: 193 95% 45%;
+    --primary-hover: 193 95% 65%;
+
+    /* Secondary - Orange/Amber for Rewards */
+    --secondary: 25 95% 53%;
+    --secondary-foreground: 220 13% 13%;
+    --secondary-muted: 25 95% 43%;
+    --secondary-hover: 25 95% 63%;
+
+    /* Accent Colors */
+    --accent: 220 13% 25%;
+    --accent-foreground: 210 40% 98%;
+    --accent-hover: 220 13% 30%;
+
+    /* Muted Elements */
+    --muted: 220 13% 20%;
+    --muted-foreground: 215 20% 65%;
+
+    /* Status Colors */
+    --success: 120 60% 50%;
+    --warning: 38 95% 55%;
+    --destructive: 0 75% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Borders and Inputs */
+    --border: 220 13% 25%;
+    --input: 220 13% 22%;
+    --ring: 193 95% 55%;
+
+    /* Node Colors */
+    --node-active: 193 95% 55%;
+    --node-completed: 120 60% 50%;
+    --node-locked: 220 13% 35%;
+    --node-current: 25 95% 53%;
+
+    /* Enhanced Gradients & Shader Effects */
+    --gradient-primary: linear-gradient(135deg, hsl(193 95% 55%) 0%, hsl(210 95% 65%) 35%, hsl(240 95% 75%) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(25 95% 53%) 0%, hsl(45 95% 63%) 35%, hsl(65 85% 73%) 100%);
+    --gradient-surface: linear-gradient(180deg, hsl(220 13% 18%) 0%, hsl(220 13% 16%) 50%, hsl(220 13% 14%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(220 13% 18%) 0%, hsl(193 95% 55% / 0.1) 50%, hsl(25 95% 53% / 0.1) 100%);
+    --gradient-mesh: radial-gradient(circle at 20% 50%, hsl(193 95% 55% / 0.3) 0%, transparent 50%), 
+                     radial-gradient(circle at 80% 20%, hsl(25 95% 53% / 0.3) 0%, transparent 50%),
+                     radial-gradient(circle at 40% 80%, hsl(240 95% 75% / 0.2) 0%, transparent 50%);
+    --gradient-animated: linear-gradient(-45deg, 
+                         hsl(193 95% 55% / 0.1) 0%, 
+                         hsl(210 95% 65% / 0.15) 25%, 
+                         hsl(25 95% 53% / 0.1) 50%, 
+                         hsl(240 95% 75% / 0.15) 75%, 
+                         hsl(193 95% 55% / 0.1) 100%);
+
+    /* Enhanced Shadows with Glow Effects */
+    --shadow-node: 0 4px 12px hsl(220 13% 8% / 0.4), 0 0 0 1px hsl(193 95% 55% / 0.1);
+    --shadow-elevated: 0 8px 25px hsl(220 13% 8% / 0.5), 0 0 0 1px hsl(193 95% 55% / 0.1);
+    --shadow-glow: 0 0 20px hsl(193 95% 55% / 0.4), 0 0 40px hsl(193 95% 55% / 0.2);
+    --shadow-mega-glow: 0 0 30px hsl(193 95% 55% / 0.5), 0 0 60px hsl(25 95% 53% / 0.3), 0 0 90px hsl(240 95% 75% / 0.2);
+    --shadow-card-hover: 0 12px 35px hsl(220 13% 8% / 0.6), 0 0 0 1px hsl(193 95% 55% / 0.2), inset 0 1px 0 hsl(210 40% 98% / 0.1);
+
+    --radius: 0.5rem;
+    --node-size: 4rem;
+
+    /* Sidebar */
+    --sidebar-background: 220 13% 15%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 193 95% 55%;
+    --sidebar-primary-foreground: 220 13% 13%;
+    --sidebar-accent: 220 13% 20%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 220 13% 25%;
+    --sidebar-ring: 193 95% 55%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    background: hsl(var(--background));
+    background-image: var(--gradient-mesh);
+    background-attachment: fixed;
+  }
+
+  /* Animated Background Grid */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-animated);
+    background-size: 400% 400%;
+    animation: gradient-shift 15s ease infinite;
+    opacity: 0.3;
+    z-index: -2;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 1px 1px, hsl(193 95% 55% / 0.15) 1px, transparent 0);
+    background-size: 50px 50px;
+    animation: grid-move 20s linear infinite;
+    z-index: -1;
+  }
+
+  /* Custom scrollbar for dark theme */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--accent));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--accent-hover));
+  }
+}
+
+@layer components {
+  /* Responsive Learning Node Styles */
+  .learning-node {
+    @apply relative flex items-center justify-center rounded-xl transition-all duration-300 cursor-pointer select-none;
+    width: clamp(3rem, 4vw, 4rem);
+    height: clamp(3rem, 4vw, 4rem);
+    box-shadow: var(--shadow-node);
+  }
+
+  @media (min-width: 768px) {
+    .learning-node {
+      width: 4rem;
+      height: 4rem;
+    }
+  }
+
+  .learning-node:hover {
+    @apply scale-110;
+    box-shadow: var(--shadow-glow);
+  }
+
+  .learning-node.completed {
+    @apply bg-success text-white;
+  }
+
+  .learning-node.current {
+    background: var(--gradient-secondary);
+    @apply text-white;
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .learning-node.active {
+    background: var(--gradient-primary);
+    @apply text-white;
+  }
+
+  .learning-node.locked {
+    @apply bg-muted text-muted-foreground cursor-not-allowed opacity-60;
+  }
+
+  /* Node Sections */
+  .node-section {
+    @apply mb-16 relative;
+  }
+
+  .section-header {
+    @apply text-center mb-8 sticky top-0 z-20 bg-background/80 backdrop-blur-md py-4 border-b border-border/50;
+  }
+
+  /* Responsive Connection Lines */
+  .node-connection {
+    @apply absolute bg-border opacity-50;
+    height: 2px;
+    z-index: 0;
+  }
+
+  @media (max-width: 767px) {
+    .node-connection {
+      height: 1px;
+    }
+  }
+
+  /* Enhanced Sidebar Styles */
+  .sidebar-item {
+    @apply flex items-center gap-3 px-4 py-3 rounded-xl text-foreground hover:bg-accent transition-all duration-200 cursor-pointer relative overflow-hidden;
+  }
+
+  .sidebar-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, hsl(193 95% 55% / 0.1), transparent);
+    transition: left 0.5s;
+  }
+
+  .sidebar-item:hover::before {
+    left: 100%;
+  }
+
+  .sidebar-item.active {
+    background: var(--gradient-primary);
+    @apply text-primary-foreground shadow-lg;
+    box-shadow: var(--shadow-glow);
+  }
+
+  .sidebar-item.active::after {
+    content: '';
+    @apply absolute left-0 top-1/2 w-1 h-8 bg-primary-foreground rounded-r-full transform -translate-y-1/2;
+  }
+
+  /* Mobile Navigation */
+  .mobile-nav-overlay {
+    @apply fixed inset-0 bg-background/80 backdrop-blur-sm z-40 lg:hidden;
+  }
+
+  .mobile-sidebar {
+    @apply fixed left-0 top-0 h-full w-80 bg-sidebar border-r border-sidebar-border z-50 transform transition-transform duration-300 lg:relative lg:transform-none lg:z-auto;
+  }
+
+  .mobile-sidebar.closed {
+    @apply -translate-x-full lg:translate-x-0;
+  }
+
+  /* Enhanced Card Variants */
+  .card-elevated {
+    @apply bg-surface border border-card-border rounded-xl p-4 relative overflow-hidden;
+    box-shadow: var(--shadow-elevated);
+    background: linear-gradient(135deg, hsl(var(--surface)) 0%, hsl(var(--surface-elevated)) 100%);
+  }
+
+  .card-elevated::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(193 95% 55% / 0.5), transparent);
+  }
+
+  .card-elevated:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-2px) scale(1.01);
+  }
+
+  @media (max-width: 767px) {
+    .card-elevated {
+      @apply p-3 rounded-lg;
+    }
+  }
+
+  /* Progress Components */
+  .progress-bar {
+    @apply h-2 bg-muted rounded-full overflow-hidden;
+  }
+
+  .progress-fill {
+    @apply h-full transition-all duration-700 ease-out;
+    background: var(--gradient-secondary);
+  }
+
+  /* Responsive Grid Layout */
+  .learning-grid {
+    @apply grid gap-6 p-4;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  @media (min-width: 768px) {
+    .learning-grid {
+      @apply gap-8 p-6;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .learning-grid {
+      @apply gap-12 p-8;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    }
+  }
+
+  /* Floating Action Button */
+  .fab {
+    @apply fixed bottom-6 right-6 w-14 h-14 bg-primary text-primary-foreground rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center z-30;
+  }
+
+  @media (min-width: 1024px) {
+    .fab {
+      @apply hidden;
+    }
+  }
+
+  /* Enhanced Animations */
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: var(--shadow-node);
+    }
+    50% {
+      box-shadow: var(--shadow-mega-glow);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  @keyframes grid-move {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
+  }
+
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  @keyframes glow-pulse {
+    0%, 100% { 
+      filter: brightness(1) saturate(1);
+      box-shadow: var(--shadow-elevated);
+    }
+    50% { 
+      filter: brightness(1.1) saturate(1.2);
+      box-shadow: var(--shadow-mega-glow);
+    }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 8s linear infinite;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s ease-in-out infinite;
+  }
+
+  .animate-glow-pulse {
+    animation: glow-pulse 3s ease-in-out infinite;
+  }
+
+  @keyframes slide-in-right {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  .animate-slide-in {
+    animation: slide-in-right 0.3s ease-out;
+  }
+
+  /* Tooltip Responsive */
+  .node-tooltip {
+    @apply absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 z-50 opacity-0 pointer-events-none transition-opacity duration-200;
+  }
+
+  .learning-node:hover .node-tooltip {
+    @apply opacity-100 pointer-events-auto;
+  }
+
+  @media (max-width: 767px) {
+    .node-tooltip {
+      @apply relative bottom-auto left-auto transform-none mt-2 opacity-100 pointer-events-auto;
+      position: static;
+    }
+  }
+}
