@@ -35,19 +35,19 @@ const Index = () => {
           />
         );
       case "daily-challenge":
-        return <DailyChallenge />;
+        return <DailyChallenge onMenuClick={() => setLeftSidebarOpen(true)} />;
       case "redeem-rewards":
-        return <RedeemRewards />;
+        return <RedeemRewards onMenuClick={() => setLeftSidebarOpen(true)} />;
       case "goals":
-        return <Goals />;
+        return <Goals onMenuClick={() => setLeftSidebarOpen(true)} />;
       case "leaderboard":
-        return <Leaderboard />;
+        return <Leaderboard onMenuClick={() => setLeftSidebarOpen(true)} />;
       case "store":
-        return <Store />;
+        return <Store onMenuClick={() => setLeftSidebarOpen(true)} />;
       case "profile":
-        return <Profile />;
+        return <Profile onMenuClick={() => setLeftSidebarOpen(true)} />;
       case "settings":
-        return <Settings />;
+        return <Settings onMenuClick={() => setLeftSidebarOpen(true)} />;
       default:
         return (
           <LearningPath 

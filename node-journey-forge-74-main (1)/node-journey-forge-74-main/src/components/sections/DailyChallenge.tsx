@@ -1,8 +1,13 @@
 import { useEffect, useRef } from "react";
 import { Calendar, Clock, Trophy, Target, Zap, ChevronRight } from "lucide-react";
 import { gsap } from "gsap";
+import { MobileHeader } from "@/components/MobileHeader";
 
-export function DailyChallenge() {
+interface DailyChallengeProps {
+  onMenuClick?: () => void;
+}
+
+export function DailyChallenge({ onMenuClick }: DailyChallengeProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement[]>([]);
 
@@ -13,18 +18,6 @@ export function DailyChallenge() {
         { opacity: 0, y: 50 },
         { opacity: 1, y: 0, duration: 0.8, stagger: 0.2, ease: "power3.out" }
       );
-
-      // Floating animation for challenge cards
-      cardsRef.current.forEach((card, index) => {
-        gsap.to(card, {
-          y: -10,
-          duration: 2 + index * 0.5,
-          repeat: -1,
-          yoyo: true,
-          ease: "sine.inOut",
-          delay: index * 0.3
-        });
-      });
     }
   }, []);
 
@@ -65,7 +58,9 @@ export function DailyChallenge() {
   ];
 
   return (
-    <div ref={containerRef} className="max-w-6xl mx-auto px-4 py-8 lg:px-8 space-y-8">
+    <div className="flex flex-col min-h-screen">
+      {onMenuClick && <MobileHeader onMenuClick={onMenuClick} title="Daily Challenges" />}
+      <div ref={containerRef} className="max-w-6xl mx-auto px-4 py-8 lg:px-8 space-y-8">
       {/* Header */}
       <div className="text-center space-y-4">
         <div className="flex items-center justify-center gap-3 mb-4">
@@ -171,6 +166,7 @@ export function DailyChallenge() {
           <div className="text-3xl font-bold text-primary">7 Days</div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

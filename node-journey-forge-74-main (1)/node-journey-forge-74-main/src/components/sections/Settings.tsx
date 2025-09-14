@@ -2,8 +2,13 @@ import { useEffect, useRef } from "react";
 import { Settings as SettingsIcon, User, Bell, Shield, Palette, Globe, Database, HelpCircle } from "lucide-react";
 import { gsap } from "gsap";
 import { Switch } from "@/components/ui/switch";
+import { MobileHeader } from "@/components/MobileHeader";
 
-export function Settings() {
+interface SettingsProps {
+  onMenuClick?: () => void;
+}
+
+export function Settings({ onMenuClick }: SettingsProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -65,7 +70,9 @@ export function Settings() {
   ];
 
   return (
-    <div ref={containerRef} className="max-w-4xl mx-auto px-4 py-8 lg:px-8 space-y-8">
+    <div className="flex flex-col min-h-screen">
+      {onMenuClick && <MobileHeader onMenuClick={onMenuClick} title="Settings" />}
+      <div ref={containerRef} className="max-w-4xl mx-auto px-4 py-8 lg:px-8 space-y-8">
       {/* Header */}
       <div className="text-center space-y-4">
         <div className="flex items-center justify-center gap-3 mb-4">
@@ -158,6 +165,7 @@ export function Settings() {
           </p>
         </div>
       </div>
+    </div>
     </div>
   );
 }

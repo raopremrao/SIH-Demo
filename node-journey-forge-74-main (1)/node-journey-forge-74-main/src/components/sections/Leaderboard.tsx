@@ -1,8 +1,13 @@
 import { useEffect, useRef } from "react";
 import { Trophy, Medal, Crown, Star, TrendingUp, Users } from "lucide-react";
 import { gsap } from "gsap";
+import { MobileHeader } from "@/components/MobileHeader";
 
-export function Leaderboard() {
+interface LeaderboardProps {
+  onMenuClick?: () => void;
+}
+
+export function Leaderboard({ onMenuClick }: LeaderboardProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const podiumRefs = useRef<HTMLDivElement[]>([]);
 
@@ -83,7 +88,9 @@ export function Leaderboard() {
   };
 
   return (
-    <div ref={containerRef} className="max-w-6xl mx-auto px-4 py-8 lg:px-8 space-y-8">
+    <div className="flex flex-col min-h-screen">
+      {onMenuClick && <MobileHeader onMenuClick={onMenuClick} title="Leaderboard" />}
+      <div ref={containerRef} className="max-w-6xl mx-auto px-4 py-8 lg:px-8 space-y-8">
       {/* Header */}
       <div className="text-center space-y-4">
         <div className="flex items-center justify-center gap-3 mb-4">
@@ -246,6 +253,7 @@ export function Leaderboard() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

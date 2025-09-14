@@ -1,8 +1,13 @@
 import { useEffect, useRef } from "react";
 import { Gift, Star, Crown, Zap, ShoppingBag } from "lucide-react";
 import { gsap } from "gsap";
+import { MobileHeader } from "@/components/MobileHeader";
 
-export function RedeemRewards() {
+interface RedeemRewardsProps {
+  onMenuClick?: () => void;
+}
+
+export function RedeemRewards({ onMenuClick }: RedeemRewardsProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const rewardRefs = useRef<HTMLDivElement[]>([]);
 
@@ -13,18 +18,6 @@ export function RedeemRewards() {
         { opacity: 0, scale: 0.8 },
         { opacity: 1, scale: 1, duration: 0.6, stagger: 0.15, ease: "back.out(1.7)" }
       );
-
-      // Continuous rotation for premium rewards
-      rewardRefs.current.forEach((reward, index) => {
-        if (index % 2 === 0) {
-          gsap.to(reward.querySelector('.reward-icon'), {
-            rotation: 360,
-            duration: 10 + index * 2,
-            repeat: -1,
-            ease: "none"
-          });
-        }
-      });
     }
   }, []);
 
@@ -102,7 +95,9 @@ export function RedeemRewards() {
   };
 
   return (
-    <div ref={containerRef} className="max-w-6xl mx-auto px-4 py-8 lg:px-8 space-y-8">
+    <div className="flex flex-col min-h-screen">
+      {onMenuClick && <MobileHeader onMenuClick={onMenuClick} title="Reward Store" />}
+      <div ref={containerRef} className="max-w-6xl mx-auto px-4 py-8 lg:px-8 space-y-8">
       {/* Header */}
       <div className="text-center space-y-4">
         <div className="flex items-center justify-center gap-3 mb-4">
@@ -203,6 +198,7 @@ export function RedeemRewards() {
           </button>
         </div>
       </div>
+    </div>
     </div>
   );
 }

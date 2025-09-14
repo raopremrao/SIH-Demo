@@ -130,7 +130,7 @@ export function LearningPath({ currentChapter, onNodeClick, onMenuClick }: Learn
             <ChevronLeft className="w-5 h-5" />
           </button>
           <div className="flex-1">
-            <span className="text-sm opacity-80 block">Section 1, Chapter 1</span>
+            <span className="text-sm opacity-80 block">Python</span>
             <h2 className="font-semibold text-lg">{currentChapter}</h2>
           </div>
         </div>

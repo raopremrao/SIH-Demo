@@ -1,8 +1,13 @@
 import { useEffect, useRef } from "react";
 import { User, Star, Trophy, Calendar, Target, Settings, Edit, Award, TrendingUp } from "lucide-react";
 import { gsap } from "gsap";
+import { MobileHeader } from "@/components/MobileHeader";
 
-export function Profile() {
+interface ProfileProps {
+  onMenuClick?: () => void;
+}
+
+export function Profile({ onMenuClick }: ProfileProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const badgeRefs = useRef<HTMLDivElement[]>([]);
 
@@ -65,7 +70,9 @@ export function Profile() {
   };
 
   return (
-    <div ref={containerRef} className="max-w-6xl mx-auto px-4 py-8 lg:px-8 space-y-8">
+    <div className="flex flex-col min-h-screen">
+      {onMenuClick && <MobileHeader onMenuClick={onMenuClick} title="Profile" />}
+      <div ref={containerRef} className="max-w-6xl mx-auto px-4 py-8 lg:px-8 space-y-8">
       {/* Header */}
       <div className="text-center space-y-4">
         <div className="flex items-center justify-center gap-3 mb-4">
@@ -220,6 +227,7 @@ export function Profile() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

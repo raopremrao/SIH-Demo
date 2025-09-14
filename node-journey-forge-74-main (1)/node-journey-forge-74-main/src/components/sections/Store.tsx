@@ -1,8 +1,13 @@
 import { useEffect, useRef } from "react";
 import { Store as StoreIcon, ShoppingBag, Star, Crown, Zap, Shield } from "lucide-react";
 import { gsap } from "gsap";
+import { MobileHeader } from "@/components/MobileHeader";
 
-export function Store() {
+interface StoreProps {
+  onMenuClick?: () => void;
+}
+
+export function Store({ onMenuClick }: StoreProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<HTMLDivElement[]>([]);
 
@@ -13,18 +18,6 @@ export function Store() {
         { opacity: 0, scale: 0.9 },
         { opacity: 1, scale: 1, duration: 0.6, stagger: 0.1, ease: "back.out(1.7)" }
       );
-
-      // Floating animation for store items
-      itemRefs.current.forEach((item, index) => {
-        gsap.to(item, {
-          y: -8,
-          duration: 2 + index * 0.3,
-          repeat: -1,
-          yoyo: true,
-          ease: "sine.inOut",
-          delay: index * 0.2
-        });
-      });
     }
   }, []);
 
@@ -139,7 +132,9 @@ export function Store() {
   };
 
   return (
-    <div ref={containerRef} className="max-w-6xl mx-auto px-4 py-8 lg:px-8 space-y-8">
+    <div className="flex flex-col min-h-screen">
+      {onMenuClick && <MobileHeader onMenuClick={onMenuClick} title="Store" />}
+      <div ref={containerRef} className="max-w-6xl mx-auto px-4 py-8 lg:px-8 space-y-8">
       {/* Header */}
       <div className="text-center space-y-4">
         <div className="flex items-center justify-center gap-3 mb-4">
@@ -307,6 +302,7 @@ export function Store() {
           </button>
         </div>
       </div>
+    </div>
     </div>
   );
 }
