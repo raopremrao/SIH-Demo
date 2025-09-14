@@ -3,6 +3,7 @@ import { Sidebar } from "@/components/Sidebar";
 import { LearningPath } from "@/components/LearningPath";
 import { RightSidebar } from "@/components/RightSidebar";
 import { DailyChallenge } from "@/components/sections/DailyChallenge";
+import { Games } from "@/components/sections/Games";
 import { RedeemRewards } from "@/components/sections/RedeemRewards";
 import { Goals } from "@/components/sections/Goals";
 import { Leaderboard } from "@/components/sections/Leaderboard";
@@ -36,6 +37,8 @@ const Index = () => {
         );
       case "daily-challenge":
         return <DailyChallenge onMenuClick={() => setLeftSidebarOpen(true)} />;
+      case "games":
+        return <Games onMenuClick={() => setLeftSidebarOpen(true)} />;
       case "redeem-rewards":
         return <RedeemRewards onMenuClick={() => setLeftSidebarOpen(true)} />;
       case "goals":

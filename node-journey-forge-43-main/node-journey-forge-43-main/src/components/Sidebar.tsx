@@ -7,6 +7,7 @@ import {
   User, 
   MoreHorizontal, 
   Gift,
+  Gamepad2,
   X
 } from "lucide-react";
 
@@ -20,6 +21,7 @@ interface SidebarProps {
 const navigationItems = [
   { id: "journey", label: "Journey", icon: Rocket },
   { id: "daily-challenge", label: "Daily Challenge", icon: Zap },
+  { id: "games", label: "Games", icon: Gamepad2 },
   { id: "redeem-rewards", label: "Redeem Rewards", icon: Gift },
   { id: "goals", label: "Goals", icon: Target },
   { id: "leaderboard", label: "Leaderboard", icon: Trophy },
