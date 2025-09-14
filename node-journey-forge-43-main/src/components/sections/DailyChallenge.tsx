@@ -117,8 +117,8 @@ export function DailyChallenge({ onMenuClick }: DailyChallengeProps) {
                   <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
                 </div>
                 
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-4">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                  <div className="flex flex-wrap items-center gap-3">
                     <div className={`px-3 py-1 rounded-full text-xs font-medium ${
                       challenge.difficulty === "Beginner" ? "bg-success/20 text-success" :
                       challenge.difficulty === "Intermediate" ? "bg-warning/20 text-warning" :
@@ -132,12 +132,12 @@ export function DailyChallenge({ onMenuClick }: DailyChallengeProps) {
                     </div>
                   </div>
                   
-                  <div className="flex items-center gap-4">
-                    <div className="text-right">
+                  <div className="flex items-center gap-4 w-full sm:w-auto">
+                    <div className="text-center sm:text-right">
                       <p className="text-sm text-muted-foreground">Progress</p>
                       <p className="font-semibold text-foreground">{challenge.progress}/{challenge.total}</p>
                     </div>
-                    <div className="text-right">
+                    <div className="text-center sm:text-right">
                       <p className="text-sm text-muted-foreground">Reward</p>
                       <p className="font-semibold text-secondary">{challenge.xp} XP</p>
                     </div>

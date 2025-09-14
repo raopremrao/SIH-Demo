@@ -95,12 +95,12 @@ export function Profile({ onMenuClick }: ProfileProps) {
       </div>
 
       {/* Profile Actions */}
-      <div className="flex justify-center gap-4">
-        <button className="flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-xl hover:bg-primary-hover transition-all duration-200 hover:scale-105">
+      <div className="flex flex-col sm:flex-row justify-center gap-4">
+        <button className="flex items-center justify-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-xl hover:bg-primary-hover transition-all duration-200 hover:scale-105">
           <Edit className="w-5 h-5" />
           Edit Profile
         </button>
-        <button className="flex items-center gap-2 bg-surface border border-card-border text-foreground px-6 py-3 rounded-xl hover:bg-surface-elevated transition-all duration-200">
+        <button className="flex items-center justify-center gap-2 bg-surface border border-card-border text-foreground px-6 py-3 rounded-xl hover:bg-surface-elevated transition-all duration-200">
           <Settings className="w-5 h-5" />
           Settings
         </button>
@@ -195,15 +195,15 @@ export function Profile({ onMenuClick }: ProfileProps) {
         <div className="space-y-3">
           {recentActivity.map((activity, index) => (
             <div key={index} className="card-elevated hover:shadow-lg transition-all duration-300">
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
                 <div className="flex-1">
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    <span className="font-medium text-foreground">{activity.activity}</span>
+                  <div className="flex items-start sm:items-center gap-3">
+                    <div className="w-2 h-2 bg-primary rounded-full mt-2 sm:mt-0 flex-shrink-0"></div>
+                    <span className="font-medium text-foreground text-sm sm:text-base">{activity.activity}</span>
                   </div>
                   <p className="text-sm text-muted-foreground ml-5">{activity.date}</p>
                 </div>
-                <div className="text-success font-semibold">{activity.xp}</div>
+                <div className="text-success font-semibold text-sm sm:text-base ml-5 sm:ml-0">{activity.xp}</div>
               </div>
             </div>
           ))}

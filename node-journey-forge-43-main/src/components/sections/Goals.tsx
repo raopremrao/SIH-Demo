@@ -156,11 +156,11 @@ export function Goals({ onMenuClick }: GoalsProps) {
           const percentage = getProgressPercentage(goal.progress, goal.target);
           return (
             <div key={goal.id} className={`card-elevated border-2 ${getCategoryColor(goal.category)}`}>
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-foreground mb-2">{goal.title}</h3>
-                  <p className="text-muted-foreground mb-3">{goal.description}</p>
-                  <div className="flex items-center gap-4 text-sm">
+              <div className="flex flex-col lg:flex-row items-start justify-between gap-4 mb-4">
+                <div className="flex-1 w-full lg:w-auto">
+                  <h3 className="text-lg lg:text-xl font-semibold text-foreground mb-2">{goal.title}</h3>
+                  <p className="text-muted-foreground mb-3 text-sm lg:text-base">{goal.description}</p>
+                  <div className="flex flex-wrap items-center gap-3 lg:gap-4 text-sm">
                     <div className="flex items-center gap-1">
                       <Clock className="w-4 h-4 text-muted-foreground" />
                       <span className="text-muted-foreground">{goal.daysLeft} days left</span>
@@ -175,8 +175,8 @@ export function Goals({ onMenuClick }: GoalsProps) {
                     </div>
                   </div>
                 </div>
-                <div className="text-right">
-                  <div className="text-2xl font-bold text-foreground">
+                <div className="text-center lg:text-right w-full lg:w-auto">
+                  <div className="text-xl lg:text-2xl font-bold text-foreground">
                     {goal.progress}/{goal.target}
                   </div>
                   <div className="text-sm text-muted-foreground">

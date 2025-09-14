@@ -151,7 +151,7 @@ export function Store({ onMenuClick }: StoreProps) {
       </div>
 
       {/* XP Balance & Cart */}
-      <div className="flex items-center justify-between card-elevated">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 card-elevated">
         <div className="flex items-center gap-4">
           <Star className="w-8 h-8 text-warning" />
           <div>
@@ -159,7 +159,7 @@ export function Store({ onMenuClick }: StoreProps) {
             <p className="text-sm text-muted-foreground">Available Balance</p>
           </div>
         </div>
-        <button className="flex items-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-xl hover:shadow-lg transition-all duration-200">
+        <button className="w-full sm:w-auto flex items-center justify-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-xl hover:shadow-lg transition-all duration-200">
           <ShoppingBag className="w-5 h-5" />
           Cart (0)
         </button>

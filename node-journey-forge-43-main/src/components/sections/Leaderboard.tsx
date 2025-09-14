@@ -128,73 +128,75 @@ export function Leaderboard({ onMenuClick }: LeaderboardProps) {
       {/* Top 3 Podium */}
       <div className="space-y-6">
         <h2 className="text-2xl font-bold text-foreground text-center">Top Performers</h2>
-        <div className="flex items-end justify-center gap-8">
-          {/* 2nd Place */}
-          <div className="text-center">
+        <div className="flex flex-col md:flex-row items-end justify-center gap-6 md:gap-8">
+          {/* Mobile: Stack vertically, Desktop: Original layout */}
+          
+          {/* 1st Place - Always first on mobile */}
+          <div className="text-center order-1 md:order-2">
             <div className="relative mb-4">
-              <div className="w-20 h-20 bg-gradient-to-br from-gray-300 to-gray-500 rounded-full flex items-center justify-center text-2xl border-4 border-gray-400">
-                {topUsers[1].avatar}
-              </div>
-              <div className="absolute -top-2 -right-2 w-8 h-8 bg-gray-400 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold">2</span>
-              </div>
-            </div>
-            <div className="space-y-1 mb-4">
-              <h3 className="font-bold text-foreground">{topUsers[1].name}</h3>
-              <p className="text-warning font-semibold">{topUsers[1].xp.toLocaleString()} XP</p>
-              <p className="text-sm text-muted-foreground">{topUsers[1].streak} day streak</p>
-            </div>
-            <div 
-              ref={(el) => el && (podiumRefs.current[1] = el)}
-              className={`${getPodiumHeight(2)} ${getPodiumColor(2)} rounded-t-lg flex items-center justify-center`}
-            >
-              <Medal className="w-8 h-8 text-white" />
-            </div>
-          </div>
-
-          {/* 1st Place */}
-          <div className="text-center">
-            <div className="relative mb-4">
-              <div className="w-24 h-24 bg-gradient-to-br from-warning to-yellow-500 rounded-full flex items-center justify-center text-3xl border-4 border-yellow-400">
+              <div className="w-20 h-20 md:w-24 md:h-24 bg-gradient-to-br from-warning to-yellow-500 rounded-full flex items-center justify-center text-2xl md:text-3xl border-4 border-yellow-400 mx-auto">
                 {topUsers[0].avatar}
               </div>
-              <div className="absolute -top-2 -right-2 w-10 h-10 bg-warning rounded-full flex items-center justify-center">
-                <Crown className="w-5 h-5 text-white" />
+              <div className="absolute -top-2 -right-2 w-8 h-8 md:w-10 md:h-10 bg-warning rounded-full flex items-center justify-center">
+                <Crown className="w-4 h-4 md:w-5 md:h-5 text-white" />
               </div>
             </div>
             <div className="space-y-1 mb-4">
-              <h3 className="font-bold text-foreground text-lg">{topUsers[0].name}</h3>
-              <p className="text-warning font-semibold text-lg">{topUsers[0].xp.toLocaleString()} XP</p>
+              <h3 className="font-bold text-foreground text-base md:text-lg">{topUsers[0].name}</h3>
+              <p className="text-warning font-semibold text-base md:text-lg">{topUsers[0].xp.toLocaleString()} XP</p>
               <p className="text-sm text-muted-foreground">{topUsers[0].streak} day streak</p>
             </div>
             <div 
               ref={(el) => el && (podiumRefs.current[0] = el)}
-              className={`${getPodiumHeight(1)} ${getPodiumColor(1)} rounded-t-lg flex items-center justify-center`}
+              className={`h-24 md:h-32 ${getPodiumColor(1)} rounded-t-lg flex items-center justify-center`}
             >
-              <Trophy className="w-10 h-10 text-white" />
+              <Trophy className="w-8 h-8 md:w-10 md:h-10 text-white" />
+            </div>
+          </div>
+
+          {/* 2nd Place */}
+          <div className="text-center order-2 md:order-1">
+            <div className="relative mb-4">
+              <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-gray-300 to-gray-500 rounded-full flex items-center justify-center text-xl md:text-2xl border-4 border-gray-400 mx-auto">
+                {topUsers[1].avatar}
+              </div>
+              <div className="absolute -top-2 -right-2 w-6 h-6 md:w-8 md:h-8 bg-gray-400 rounded-full flex items-center justify-center">
+                <span className="text-white font-bold text-sm md:text-base">2</span>
+              </div>
+            </div>
+            <div className="space-y-1 mb-4">
+              <h3 className="font-bold text-foreground text-sm md:text-base">{topUsers[1].name}</h3>
+              <p className="text-warning font-semibold text-sm md:text-base">{topUsers[1].xp.toLocaleString()} XP</p>
+              <p className="text-sm text-muted-foreground">{topUsers[1].streak} day streak</p>
+            </div>
+            <div 
+              ref={(el) => el && (podiumRefs.current[1] = el)}
+              className={`h-16 md:h-24 ${getPodiumColor(2)} rounded-t-lg flex items-center justify-center`}
+            >
+              <Medal className="w-6 h-6 md:w-8 md:h-8 text-white" />
             </div>
           </div>
 
           {/* 3rd Place */}
-          <div className="text-center">
+          <div className="text-center order-3">
             <div className="relative mb-4">
-              <div className="w-20 h-20 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center text-2xl border-4 border-orange-500">
+              <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center text-xl md:text-2xl border-4 border-orange-500 mx-auto">
                 {topUsers[2].avatar}
               </div>
-              <div className="absolute -top-2 -right-2 w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold">3</span>
+              <div className="absolute -top-2 -right-2 w-6 h-6 md:w-8 md:h-8 bg-orange-500 rounded-full flex items-center justify-center">
+                <span className="text-white font-bold text-sm md:text-base">3</span>
               </div>
             </div>
             <div className="space-y-1 mb-4">
-              <h3 className="font-bold text-foreground">{topUsers[2].name}</h3>
-              <p className="text-warning font-semibold">{topUsers[2].xp.toLocaleString()} XP</p>
+              <h3 className="font-bold text-foreground text-sm md:text-base">{topUsers[2].name}</h3>
+              <p className="text-warning font-semibold text-sm md:text-base">{topUsers[2].xp.toLocaleString()} XP</p>
               <p className="text-sm text-muted-foreground">{topUsers[2].streak} day streak</p>
             </div>
             <div 
               ref={(el) => el && (podiumRefs.current[2] = el)}
-              className={`${getPodiumHeight(3)} ${getPodiumColor(3)} rounded-t-lg flex items-center justify-center`}
+              className={`h-14 md:h-20 ${getPodiumColor(3)} rounded-t-lg flex items-center justify-center`}
             >
-              <Medal className="w-8 h-8 text-white" />
+              <Medal className="w-6 h-6 md:w-8 md:h-8 text-white" />
             </div>
           </div>
         </div>
@@ -206,27 +208,27 @@ export function Leaderboard({ onMenuClick }: LeaderboardProps) {
         <div className="space-y-3">
           {regularUsers.map((user, index) => (
             <div key={user.rank} className="card-elevated hover:shadow-lg transition-all duration-300 group">
-              <div className="flex items-center gap-4">
-                <div className="flex items-center gap-3">
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-white ${
+              <div className="flex items-center gap-3 md:gap-4">
+                <div className="flex items-center gap-2 md:gap-3 min-w-0 flex-1">
+                  <div className={`w-6 h-6 md:w-8 md:h-8 rounded-full flex items-center justify-center font-bold text-white text-sm md:text-base ${
                     user.rank <= 5 ? 'bg-gradient-to-r from-warning to-yellow-500' : 'bg-muted'
                   }`}>
                     {user.rank}
                   </div>
-                  <div className="text-2xl">{user.avatar}</div>
-                  <span className="text-lg">{user.country}</span>
+                  <div className="text-xl md:text-2xl">{user.avatar}</div>
+                  <span className="text-base md:text-lg">{user.country}</span>
                 </div>
                 
-                <div className="flex-1">
-                  <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors text-sm md:text-base truncate">
                     {user.name}
                   </h3>
-                  <p className="text-sm text-muted-foreground">{user.streak} day streak</p>
+                  <p className="text-xs md:text-sm text-muted-foreground">{user.streak} day streak</p>
                 </div>
                 
                 <div className="text-right">
-                  <div className="text-lg font-bold text-warning">{user.xp.toLocaleString()}</div>
-                  <div className="text-sm text-muted-foreground">XP</div>
+                  <div className="text-base md:text-lg font-bold text-warning">{user.xp.toLocaleString()}</div>
+                  <div className="text-xs md:text-sm text-muted-foreground">XP</div>
                 </div>
               </div>
             </div>
@@ -237,19 +239,19 @@ export function Leaderboard({ onMenuClick }: LeaderboardProps) {
       {/* Your Position */}
       <div className="card-elevated bg-gradient-to-r from-primary/20 to-secondary/20 border-primary/30">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center font-bold text-white text-lg">
+          <div className="flex items-center gap-3 md:gap-4 min-w-0 flex-1">
+            <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center font-bold text-white text-sm md:text-lg">
               342
             </div>
-            <div className="text-2xl">👤</div>
-            <div>
-              <h3 className="text-xl font-bold text-foreground">Your Position</h3>
-              <p className="text-muted-foreground">Keep learning to climb higher!</p>
+            <div className="text-xl md:text-2xl">👤</div>
+            <div className="min-w-0 flex-1">
+              <h3 className="text-lg md:text-xl font-bold text-foreground">Your Position</h3>
+              <p className="text-sm md:text-base text-muted-foreground">Keep learning to climb higher!</p>
             </div>
           </div>
           <div className="text-right">
-            <div className="text-2xl font-bold text-primary">1,250</div>
-            <div className="text-sm text-muted-foreground">XP</div>
+            <div className="text-xl md:text-2xl font-bold text-primary">1,250</div>
+            <div className="text-xs md:text-sm text-muted-foreground">XP</div>
           </div>
         </div>
       </div>

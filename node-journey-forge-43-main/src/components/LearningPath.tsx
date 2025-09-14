@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { LearningNode } from "./LearningNode";
-import { ChevronLeft, Menu } from "lucide-react";
+import { ChevronLeft, Menu, Lock } from "lucide-react";
 
 interface LearningPathProps {
   currentChapter: string;
@@ -103,7 +103,29 @@ const programmingCurriculum = [
 ];
 
 export function LearningPath({ currentChapter, onNodeClick, onMenuClick }: LearningPathProps) {
+  const [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set(["Programming Fundamentals"]));
+
+  const languages = [
+    { 
+      id: "python", 
+      name: "Python", 
+      description: "Easy to learn, powerful programming language",
+      available: true 
+    },
+    { 
+      id: "css", 
+      name: "CSS", 
+      description: "Style and design web pages",
+      available: false 
+    },
+    { 
+      id: "javascript", 
+      name: "JavaScript", 
+      description: "Make websites interactive",
+      available: false 
+    }
+  ];
 
   const toggleSection = (sectionName: string) => {
     const newExpanded = new Set(expandedSections);
@@ -115,6 +137,87 @@ export function LearningPath({ currentChapter, onNodeClick, onMenuClick }: Learn
     setExpandedSections(newExpanded);
   };
 
+  // Language Selection View
+  if (!selectedLanguage) {
+    return (
+      <div className="flex-1 relative min-h-screen bg-background overflow-auto">
+        {/* Mobile Header */}
+        <div className="sticky top-0 z-10 bg-primary text-primary-foreground border-b border-primary-muted">
+          <div className="flex items-center gap-3 p-4">
+            <button 
+              onClick={onMenuClick}
+              className="lg:hidden text-primary-foreground hover:text-white transition-colors"
+            >
+              <Menu className="w-6 h-6" />
+            </button>
+            <div className="flex-1">
+              <h2 className="font-semibold text-lg">Choose Your Learning Path</h2>
+              <span className="text-sm opacity-80">Select a programming language to start</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Language Selection */}
+        <div className="max-w-4xl mx-auto px-4 py-12 lg:px-8">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold text-foreground mb-4">Start Your Coding Journey</h1>
+            <p className="text-lg text-muted-foreground">Choose a programming language to begin learning</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {languages.map((language) => (
+              <div
+                key={language.id}
+                className={`relative group ${
+                  language.available 
+                    ? "cursor-pointer" 
+                    : "cursor-not-allowed opacity-60"
+                }`}
+                onClick={() => language.available && setSelectedLanguage(language.id)}
+              >
+                <div className={`card-elevated p-8 text-center transition-all duration-300 ${
+                  language.available 
+                    ? "hover:shadow-xl hover:scale-105" 
+                    : ""
+                }`}>
+                  {!language.available && (
+                    <div className="absolute top-4 right-4">
+                      <Lock className="w-5 h-5 text-muted-foreground" />
+                    </div>
+                  )}
+                  
+                  <div className="mb-6">
+                    <div className={`w-16 h-16 rounded-full mx-auto flex items-center justify-center text-2xl font-bold ${
+                      language.id === "python" ? "bg-primary/20 text-primary" :
+                      language.id === "css" ? "bg-blue-500/20 text-blue-500" :
+                      "bg-yellow-500/20 text-yellow-500"
+                    }`}>
+                      {language.name.charAt(0)}
+                    </div>
+                  </div>
+                  
+                  <h3 className="text-xl font-bold text-foreground mb-3">{language.name}</h3>
+                  <p className="text-muted-foreground mb-6">{language.description}</p>
+                  
+                  {language.available ? (
+                    <div className="inline-flex items-center text-sm font-medium text-primary">
+                      Start Learning →
+                    </div>
+                  ) : (
+                    <div className="inline-flex items-center text-sm font-medium text-muted-foreground">
+                      Coming Soon
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Python Curriculum View
   return (
     <div className="flex-1 relative min-h-screen bg-background overflow-auto">
       {/* Mobile Header */}
@@ -126,12 +229,15 @@ export function LearningPath({ currentChapter, onNodeClick, onMenuClick }: Learn
           >
             <Menu className="w-6 h-6" />
           </button>
-          <button className="text-primary-foreground hover:text-white transition-colors">
+          <button 
+            onClick={() => setSelectedLanguage(null)}
+            className="text-primary-foreground hover:text-white transition-colors"
+          >
             <ChevronLeft className="w-5 h-5" />
           </button>
           <div className="flex-1">
-            <span className="text-sm opacity-80 block">Python</span>
-            <h2 className="font-semibold text-lg">{currentChapter}</h2>
+            <span className="text-sm opacity-80 block">Python Learning Path</span>
+            <h2 className="font-semibold text-lg">Getting Started with Python</h2>
           </div>
         </div>
       </div>
